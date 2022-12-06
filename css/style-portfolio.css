@@ -48,18 +48,148 @@ body{
     justify-content: space-evenly;
     align-items: center;
 }
+.a
+{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
 
+.date
+{
+    font-size: 17px;
+}
+.contain-info .h3, .h4
+{
+    color: var(--darkblue)
+}
 
+/* Pie chart  */
+@property --p{
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+  }
+  
+.pie {
+  --p:20;
+  --b:22px;
+  --c:darkred;
+  --w:150px;
+  
+  width:var(--w);
+  aspect-ratio:1;
+  position:relative;
+  display:inline-grid;
+  margin:5px;
+  place-content:center;
+  font-size:25px;
+  font-weight:bold;
+  font-family:sans-serif;
+}
+.pie:before,
+.pie:after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+}
+.pie:before {
+  inset:0;
+  background:
+    radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+          mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+.pie:after {
+  inset:calc(50% - var(--b)/2);
+  background:var(--c);
+  transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+}
+.animate {
+  animation:p 1s .5s both;
+}
+.no-round:before {
+  background-size:0 0,auto;
+}
+.no-round:after {
+  content:none;
+}
+@keyframes p {
+  from{--p:0}
+}
+
+body {
+  background:#ddd;
+}
+/* .language-interest
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 5px;
+  grid-column-gap: 5px;
+  
+  
+} */
+.block
+{
+  position: relative;
+  border-radius: 10px;
+  border: solid 2px var(--darkblue);
+  width: 40%;
+  height: 250px;
+  
+  font-size: 25px;
+}
+.block h2
+{
+  position: absolute;
+  top: -10%;
+  left: 25%;
+  color: var(--darkblue)
+}
+.card-text li
+{
+  list-style-type: none;
+}
 
 
 /* responsive pour le telephone */
 @media (max-width: 575px) {
-    .name
-{
-    font-size: 32px;
-}
-.about-me
-{
-    font-size: 16px;
-}
+        .name
+    {
+        font-size: 32px;
+    }
+    .about-me
+    {
+        font-size: 16px;
+    }
+    .date
+    {
+        font-size: 13px;
+    }
+    h1
+    {
+        font-size: 30px;
+    }
+    .contain-info .h3
+    {
+        font-size: 20px;
+    }
+    .contain-info .h4
+    {
+        font-size: 18px;
+    }
+    .language-interest
+    {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .block
+    {
+      width: 90%;
+      margin: 0;
+    }
+
 }
